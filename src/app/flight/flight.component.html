@@ -1,0 +1,86 @@
+<app-auth-nav></app-auth-nav>
+
+<h1>Flight Log</h1>
+<div class="container px-2000 py-2500" id="hanging-icons">
+    <div class="row g-3 py-3 row-cols-1 row-cols-lg-3">
+      <div class="col d-flex align-items-start">
+        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+        </div>
+        <div>
+            <main class="form-signin">
+                <form #pForm="ngForm" [formGroup]="form" (submit)="submit()">
+                    <h2 *ngIf="editMode == true">Update existing flight log entry</h2>
+                    <h2 *ngIf="editMode == false">Create new flight log entry</h2>
+                
+                    <div></div>
+                    <div class="form-floating">
+                        <input formControlName="tailNumber" class="form-control" id="floatingPassword" placeholder="Tail Number" ngModel>
+                        <label for="floatingPassword">Tail Number</label>
+                      </div>
+                    <div class="form-floating">
+                      <input formControlName="flightID" class="form-control" id="floatingPassword" placeholder="Flight ID" ngModel>
+                      <label for="floatingPassword">Flight Id</label>
+                    </div>
+                    <div class="form-floating">
+                       <input formControlName="takeoff" class="form-control" id="floatingPassword" placeholder="Takeoff" ngModel>
+                       <label for="floatingPassword">Takeoff</label>
+                    </div>
+                    <div class="form-floating">
+                       <input formControlName="landing" class="form-control" id="floatingPassword" placeholder="Landing" ngModel>
+                       <label for="floatingPassword">Landing</label>
+                    </div>
+                    <div class="form-floating">
+                        <input formControlName="duration" class="form-control" id="floatingPassword" placeholder="Duration" ngModel>
+                        <label for="floatingPassword">Duration</label>
+                     </div>
+                
+                    
+                    <button class="w-100 btn btn-lg btn-primary" style="background: green; color: white" type="submit" *ngIf="editMode == true">Update</button>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" *ngIf="editMode == false">Submit</button>
+
+                  </form>
+                </main>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
+        </div>
+        <div>
+        <main>
+            <h2>Flight log entries</h2>
+            <td><h4 class="h3 mb-3 fw-normal">Search entries by Flight ID:  </h4></td>
+            <td><input class="search-hero" type="text" name="search" [(ngModel)]="searchText" placeholder="Flight ID"></td>    
+            <div></div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Tail Number</td>
+                        <td>Flight Id</td>
+                        <td>Takeoff Time</td>
+                        <td>Landing Time</td>
+                        <td>Total Duration</td>
+                        <td>Modify Data</td>
+                        <td>Delete Data</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of flightlist | filter:searchText">
+                        <td>{{item.tailNumber}}</td>
+                        <td>{{item.flightID}}</td>
+                        <td>{{item.takeoff}}</td>
+                        <td>{{item.landing}}</td>
+                        <td>{{item.duration}}</td>
+                        <td><button class="btn" style="background: green; color: white" (click)="OnModify(item._id)">Modify</button></td>
+                        <td><button class="btn" style="background: red; color: white" (click)="OnDelete(item._id)">Delete</button></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </main>
+        </div>
+      </div>
+      
+    </div>
+  </div>

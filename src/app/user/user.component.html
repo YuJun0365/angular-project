@@ -1,0 +1,39 @@
+<app-auth-nav></app-auth-nav>
+
+<h1>User Details</h1>
+
+<main class="form-signin">
+    <form [formGroup]="form" (submit)="submit()">
+        <tr>
+        
+        <td><h3 class="h3 mb-3 fw-normal">Please enter id for data deletion:  </h3></td>
+
+        <td> </td>
+    
+        <td><div>
+          <input formControlName="id" class="form-control" placeholder="Id">
+        </div></td>    
+        
+        
+        <td><button class="btn" style="background: red; color: white" type="submit">Delete Data</button></td>
+      </form>
+    </main>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Username</td>
+            <td>Access Token</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of userlist">
+            <td>{{item._id}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.token}}</td>
+        </tr>
+    </tbody>
+    
+</table>
+

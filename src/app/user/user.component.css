@@ -1,0 +1,23 @@
+table
+{
+  width:40%;
+}
+td
+{
+  height:40px;
+}
+
+
+thead{
+    background-color: skyblue;
+}
+
+tbody{
+    background-color: azure;
+}
+
+form {
+    border-spacing:5 15px;
+    display: inline;
+    justify-content: space-between;
+}

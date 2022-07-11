@@ -1,0 +1,15 @@
+main{
+    border: 5px solid blue;
+    padding: 30px;
+    background-color: lightskyblue;
+}
+
+table{
+    border: 5px solid grey;
+    padding: 25px;
+    background-color: azure;
+}
+
+red{
+    background-color: red;
+}
